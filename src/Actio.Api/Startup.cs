@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Actio.Api.Handlers;
+using Actio.Common.Events;
+using Actio.Common.RabbitMq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,6 +27,11 @@ namespace Actio.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddRabbitMq(Configuration);
+            services.AddScoped<IEventHandler<ActivityCreated>, CreateActivityHandler>();
+            services.AddScoped<IEventHandler<UserCreated>, CreateUserHandler>();
+            services.AddScoped<IEventHandler<UserAuthenticated>, AuthenticateUserHandler>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
