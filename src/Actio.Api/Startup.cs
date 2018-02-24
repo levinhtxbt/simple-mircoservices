@@ -41,7 +41,6 @@ namespace Actio.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseMvc();
         }
     }

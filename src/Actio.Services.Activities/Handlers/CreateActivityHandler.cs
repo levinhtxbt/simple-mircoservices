@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Actio.Common.Commands;
 using Actio.Common.Events;
-using Actio.Services.Activities.Exceptions;
+using Actio.Common.Exceptions;
 using Actio.Services.Activities.Services;
 using RawRabbit;
 

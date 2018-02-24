@@ -1,6 +1,6 @@
 using System;
 
-namespace Actio.Services.Activities.Exceptions
+namespace Actio.Common.Exceptions
 {
     public class ActioException : Exception
     {

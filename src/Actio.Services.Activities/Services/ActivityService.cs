@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
+using Actio.Common.Exceptions;
 using Actio.Services.Activities.Domain.Models;
 using Actio.Services.Activities.Domain.Repositories;
-using Actio.Services.Activities.Exceptions;
 
 namespace Actio.Services.Activities.Services
 {
