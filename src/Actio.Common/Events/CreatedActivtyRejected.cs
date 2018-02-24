@@ -4,16 +4,16 @@ namespace Actio.Common.Events
     {
         public string Reason { get; }
 
-        public int Code { get; }
+        public string Code { get; }
 
         protected CreatedActivtyRejected()
         {
         }
 
-        public CreatedActivtyRejected(string reason, int code)
+        public CreatedActivtyRejected(string code, string reason)
         {
-            Reason = reason;
             Code = code;
+            Reason = reason;
         }
     }
 }

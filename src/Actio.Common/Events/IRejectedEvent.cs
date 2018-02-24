@@ -4,6 +4,6 @@ namespace Actio.Common.Events
     {
         string Reason { get; }
 
-        int Code { get; }
+        string Code { get; }
     }
 }

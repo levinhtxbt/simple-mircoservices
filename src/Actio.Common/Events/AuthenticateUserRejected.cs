@@ -4,7 +4,7 @@ namespace Actio.Common.Events
     {
         public string Reason { get; }
 
-        public int Code { get; }
+        public string Code { get; }
 
         public string Email { get; set; }
 
@@ -12,10 +12,10 @@ namespace Actio.Common.Events
         {
         }
 
-        public AuthenticateUserRejected(string reason, int code, string email) 
+        public AuthenticateUserRejected(string code, string reason, string email) 
         {
-            Reason = reason;
             Code = code;
+            Reason = reason;
             Email = email;
         }
 
