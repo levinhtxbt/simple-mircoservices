@@ -28,9 +28,14 @@ namespace Actio.Api
         {
             services.AddMvc();
             services.AddRabbitMq(Configuration);
+            
             services.AddScoped<IEventHandler<ActivityCreated>, CreateActivityHandler>();
             services.AddScoped<IEventHandler<UserCreated>, CreateUserHandler>();
             services.AddScoped<IEventHandler<UserAuthenticated>, AuthenticateUserHandler>();
+
+            services.AddScoped<IEventHandler<CreateActivtyRejected>, CreateActivityHandler>();
+            services.AddScoped<IEventHandler<CreateUserRejected>, CreateUserHandler>();
+            services.AddScoped<IEventHandler<AuthenticateUserRejected>, AuthenticateUserHandler>();
 
         }
 

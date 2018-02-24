@@ -4,18 +4,18 @@ using Actio.Common.Events;
 
 namespace Actio.Api.Handlers
 {
-    public class CreateActivityHandler : IEventHandler<ActivityCreated>, IEventHandler<CreatedActivtyRejected>
+    public class CreateActivityHandler : IEventHandler<ActivityCreated>, IEventHandler<CreateActivtyRejected>
     {
         public async Task HandlerAsync(ActivityCreated @event)
         {
             await Task.CompletedTask;
-            
             Console.WriteLine($"Activỉty Created: {@event.Name}");
         }
 
-        public Task HandlerAsync(CreatedActivtyRejected @event)
+        public async Task HandlerAsync(CreateActivtyRejected @event)
         {
-            throw new NotImplementedException();
+            await Task.CompletedTask;
+            Console.WriteLine($"Create Activity Rejected: {@event.Code} -> {@event.Reason}");
         }
     }
 }

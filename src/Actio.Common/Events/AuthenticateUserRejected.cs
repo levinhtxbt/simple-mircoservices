@@ -6,18 +6,15 @@ namespace Actio.Common.Events
 
         public string Code { get; }
 
-        public string Email { get; set; }
 
         protected AuthenticateUserRejected()
         {
         }
 
-        public AuthenticateUserRejected(string code, string reason, string email) 
+        public AuthenticateUserRejected(string code, string reason)
         {
             Code = code;
             Reason = reason;
-            Email = email;
         }
-
     }
 }

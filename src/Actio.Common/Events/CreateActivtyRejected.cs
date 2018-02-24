@@ -1,16 +1,16 @@
 namespace Actio.Common.Events
 {
-    public class CreatedActivtyRejected : IRejectedEvent
+    public class CreateActivtyRejected : IRejectedEvent
     {
         public string Reason { get; }
 
         public string Code { get; }
 
-        protected CreatedActivtyRejected()
+        protected CreateActivtyRejected()
         {
         }
 
-        public CreatedActivtyRejected(string code, string reason)
+        public CreateActivtyRejected(string code, string reason)
         {
             Code = code;
             Reason = reason;

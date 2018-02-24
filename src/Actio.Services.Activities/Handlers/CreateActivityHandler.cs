@@ -20,19 +20,24 @@ namespace Actio.Services.Activities.Handlers
         }
         public async Task HandlerAsync(CreateActivity command)
         {
-            Console.WriteLine($"Receive CreateActivity command:{command.Name}");
+            Console.WriteLine($"Receive Create Activity command:{command.Name}");
             try
             {
                 await _activityService.AddAsync(command.Id, command.Name, command.Description,
                     command.Category, command.UserId, command.CreatedAt);
+
+                await _bus.PublishAsync(new ActivityCreated(command.Id, command.UserId, command.Category,
+                    command.Name, command.Description));
+
+                return;
             }
             catch (ActioException ex)
             {
-                await _bus.PublishAsync<CreatedActivtyRejected>(new CreatedActivtyRejected(ex.Code, ex.Message));
+                await _bus.PublishAsync(new CreateActivtyRejected(ex.Code, ex.Message));
             }
             catch (Exception ex)
             {
-                await _bus.PublishAsync<CreatedActivtyRejected>(new CreatedActivtyRejected("error", ex.Message));
+                await _bus.PublishAsync(new CreateActivtyRejected("error", ex.Message));
             }
         }
     }
