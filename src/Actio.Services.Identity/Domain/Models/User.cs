@@ -10,7 +10,7 @@ namespace Actio.Services.Identity.Domain.Models
 
         public string Email { get; protected set; }
 
-        public string Username { get; protected set; }
+        public string Name { get; protected set; }
 
         public string Password { get; protected set; }
 
@@ -23,7 +23,7 @@ namespace Actio.Services.Identity.Domain.Models
 
         }
 
-        public User(string email, string username)
+        public User(string email, string name)
         {
             if (string.IsNullOrEmpty(email))
             {
@@ -31,15 +31,15 @@ namespace Actio.Services.Identity.Domain.Models
                     "Email cannot be empty");
             }
 
-            if (string.IsNullOrEmpty(username))
+            if (string.IsNullOrEmpty(name))
             {
                 throw new ActioException("empty_username",
-                    "User name cannot be empty");
+                    "Name cannot be empty");
             }
 
             Id = Guid.NewGuid();
             Email = email;
-            Username = username;
+            Name = name;
             CreatedAt = DateTime.UtcNow;
         }
 

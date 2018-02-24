@@ -20,7 +20,7 @@ namespace Actio.Services.Identity.Handlers
         public async Task HandlerAsync(CreateUser command)
         {
             Console.WriteLine($"Receive CreateActivity command:{command.Email}");
-            await _bus.PublishAsync<UserCreated>(new UserCreated(command.Email, command.Username));
+            await _bus.PublishAsync<UserCreated>(new UserCreated(command.Email, command.Name));
         }
     }
 }

@@ -4,17 +4,17 @@ namespace Actio.Common.Events
     {
         public string Email { get; }
 
-        public string Username { get; }
+        public string Name { get; }
 
         protected UserCreated()
         {
 
         }
 
-        public UserCreated(string email, string username)
+        public UserCreated(string email, string name)
         {
             Email = email;
-            Username = username;
+            Name = name;
         }
     }
 }
