@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Actio.Common.Auth;
 using Actio.Common.Exceptions;
 using Actio.Services.Identity.Domain.Models;
 using Actio.Services.Identity.Domain.Repositories;
@@ -12,14 +13,18 @@ namespace Actio.Services.Identity.Services
 
         private readonly IEncryptor _encryptor;
 
+        private readonly IJwtHandler _jwtHandler;
+
         public UserService(IUserRepository userRepository,
-        IEncryptor encryptor)
+            IEncryptor encryptor,
+            IJwtHandler jwtHandler)
         {
+            _jwtHandler = jwtHandler;
             _encryptor = encryptor;
             _userRepository = userRepository;
         }
 
-        public async Task Login(string email, string password)
+        public async Task<JsonWebToken> Login(string email, string password)
         {
             var user = await _userRepository.GetAsync(email);
             if (user == null)
@@ -35,7 +40,7 @@ namespace Actio.Services.Identity.Services
             }
 
             // Generate JWT
-
+            return _jwtHandler.Create(user.Id);
         }
 
         public async Task Register(string email, string password, string name)

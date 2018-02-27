@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Actio.Common.Commands;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RawRabbit;
 
@@ -26,5 +28,9 @@ namespace Actio.Api.Controllers
 
             return Accepted($"activities/{command.Id}");
         }
+
+        [HttpGet("secured")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public IActionResult Secured() => Content("Secured");
     }
 }
