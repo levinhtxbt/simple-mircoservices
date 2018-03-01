@@ -35,12 +35,13 @@ services:
   mongo:
     image: mongo
     volumes:
-      - ./data/db:/data/db
+      - mongodata:/data/db
     ports:
       - '27017:27017'
-
   rabbitmq:
     image: rabbitmq:3.6.5-management
     ports:
       - '5672:5672'
       - '15672:15672'
+volumes:
+  mongodata:
